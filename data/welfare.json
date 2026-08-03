@@ -1,0 +1,41 @@
+[
+  {
+    "id": "1",
+    "title": "청년 월세 지원",
+    "description": "청년의 주거비 부담을 줄이기 위한 월세 지원 사업",
+    "region": "서울",
+    "age": "청년",
+    "income": "중위100%",
+    "category": "주거",
+    "target": "청년",
+    "deadline": "2026-09-30",
+    "organization": "서울시",
+    "link": "https://www.bokjiro.go.kr"
+  },
+  {
+    "id": "2",
+    "title": "출산 지원금",
+    "description": "출산 가정을 위한 현금 지원",
+    "region": "경기",
+    "age": "무관",
+    "income": "무관",
+    "category": "출산",
+    "target": "가정",
+    "deadline": "2026-12-31",
+    "organization": "경기도",
+    "link": "https://www.bokjiro.go.kr"
+  },
+  {
+    "id": "3",
+    "title": "노인 일자리",
+    "description": "노년층을 위한 공공 일자리",
+    "region": "부산",
+    "age": "노인",
+    "income": "중위80%",
+    "category": "일자리",
+    "target": "노인",
+    "deadline": "2026-08-31",
+    "organization": "부산시",
+    "link": "https://www.bokjiro.go.kr"
+  }
+]
