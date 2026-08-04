@@ -1,23 +1,37 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 const STORAGE_KEY = "favorites";
 
 export function useFavorite() {
   const [favorites, setFavorites] = useState<string[]>([]);
 
-  useEffect(() => {
+  const load = useCallback(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEY);
 
-      if (saved) {
-        setFavorites(JSON.parse(saved));
+      if (!saved) {
+        setFavorites([]);
+        return;
       }
+
+      setFavorites(JSON.parse(saved));
     } catch {
       setFavorites([]);
     }
   }, []);
+
+  useEffect(() => {
+    load();
+
+    const sync = () => load();
+
+    window.addEventListener("storage", sync);
+
+    return () =>
+      window.removeEventListener("storage", sync);
+  }, [load]);
 
   function toggle(id: string) {
     const next = favorites.includes(id)
@@ -32,13 +46,9 @@ export function useFavorite() {
     );
   }
 
-  function isFavorite(id: string) {
-    return favorites.includes(id);
-  }
-
   return {
     favorites,
     toggle,
-    isFavorite,
+    isFavorite: (id: string) => favorites.includes(id),
   };
 }
