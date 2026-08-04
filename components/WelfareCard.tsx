@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Welfare } from "@/types/welfare";
+import FavoriteButton from "./FavoriteButton";
 
 export default function WelfareCard({
   item,
@@ -7,37 +8,41 @@ export default function WelfareCard({
   item: Welfare;
 }) {
   return (
-    <div className="rounded-xl bg-white p-5 shadow hover:shadow-lg transition">
-      <div className="flex justify-between">
-        <span className="rounded bg-blue-100 px-2 py-1 text-xs">
+    <div className="rounded-xl border bg-white p-5 shadow transition hover:-translate-y-1 hover:shadow-xl">
+      <div className="flex items-start justify-between">
+        <span className="rounded bg-blue-100 px-2 py-1 text-xs font-medium text-blue-700">
           {item.category}
         </span>
 
-        <span className="text-red-500 text-sm">
-          {item.deadline}
-        </span>
+        <FavoriteButton id={item.id} />
       </div>
 
-      <h2 className="mt-3 text-xl font-bold">
+      <h2 className="mt-4 text-xl font-bold">
         {item.title}
       </h2>
 
-      <p className="mt-2 text-gray-600 line-clamp-3">
+      <p className="mt-2 line-clamp-3 text-gray-600">
         {item.description}
       </p>
 
-      <div className="mt-4 flex flex-wrap gap-2 text-sm">
+      <div className="mt-4 flex flex-wrap gap-2 text-sm text-gray-500">
         <span>📍 {item.region}</span>
         <span>👤 {item.age}</span>
         <span>💰 {item.income}</span>
       </div>
 
-      <Link
-        href={`/detail/${item.id}`}
-        className="mt-5 inline-block rounded bg-blue-600 px-4 py-2 text-white"
-      >
-        상세보기
-      </Link>
+      <div className="mt-4 flex items-center justify-between">
+        <span className="text-sm text-red-500">
+          마감 {item.deadline}
+        </span>
+
+        <Link
+          href={`/detail/${item.id}`}
+          className="rounded-lg bg-blue-600 px-4 py-2 text-white transition hover:bg-blue-700"
+        >
+          상세보기
+        </Link>
+      </div>
     </div>
   );
 }
