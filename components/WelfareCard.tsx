@@ -25,13 +25,13 @@ export default function WelfareCard({
         {item.description}
       </p>
 
-      <div className="mt-4 flex flex-wrap gap-2 text-sm text-gray-500">
+      <div className="mt-4 flex flex-wrap gap-3 text-sm text-gray-500">
         <span>📍 {item.region}</span>
         <span>👤 {item.age}</span>
         <span>💰 {item.income}</span>
       </div>
 
-      <div className="mt-4 flex items-center justify-between">
+      <div className="mt-5 flex items-center justify-between">
         <span className="text-sm text-red-500">
           마감 {item.deadline}
         </span>
