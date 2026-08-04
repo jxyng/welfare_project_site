@@ -7,14 +7,22 @@ interface Props {
   id: string;
 }
 
-export default function FavoriteButton({ id }: Props) {
+export default function FavoriteButton({
+  id,
+}: Props) {
   const { favorites, toggle } = useFavorite();
 
   const active = favorites.includes(id);
 
   return (
     <button
-      onClick={() => toggle(id)}
+      type="button"
+      onClick={(e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        toggle(id);
+      }}
+      aria-label="즐겨찾기"
       className={`rounded-lg p-2 transition ${
         active
           ? "bg-red-100 text-red-500"
