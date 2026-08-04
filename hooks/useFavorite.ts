@@ -2,14 +2,20 @@
 
 import { useEffect, useState } from "react";
 
+const STORAGE_KEY = "favorites";
+
 export function useFavorite() {
   const [favorites, setFavorites] = useState<string[]>([]);
 
   useEffect(() => {
-    const saved = localStorage.getItem("favorites");
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
 
-    if (saved) {
-      setFavorites(JSON.parse(saved));
+      if (saved) {
+        setFavorites(JSON.parse(saved));
+      }
+    } catch {
+      setFavorites([]);
     }
   }, []);
 
@@ -21,13 +27,18 @@ export function useFavorite() {
     setFavorites(next);
 
     localStorage.setItem(
-      "favorites",
+      STORAGE_KEY,
       JSON.stringify(next)
     );
+  }
+
+  function isFavorite(id: string) {
+    return favorites.includes(id);
   }
 
   return {
     favorites,
     toggle,
+    isFavorite,
   };
 }
