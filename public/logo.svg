@@ -1,0 +1,23 @@
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="256"
+    height="256"
+    viewBox="0 0 256 256">
+
+<rect
+width="256"
+height="256"
+rx="32"
+fill="#2563eb"/>
+
+<circle
+cx="128"
+cy="90"
+r="38"
+fill="white"/>
+
+<path
+d="M58 196c10-40 44-62 70-62s60 22 70 62"
+fill="white"/>
+
+</svg>
